@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { User } from 'firebase';
 
 
 @Component({
@@ -10,13 +11,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class AppComponent {
   title = 'mastergym';
+  usuario: User;
+  cargando: boolean = true;
 
   constructor(public afAuth: AngularFireAuth)
   {
     // Mostrando data observable
-    // this.afAuth.user.subscribe((usuario)=>{
-    //   console.log(usuario);
-    // });
+    this.afAuth.user.subscribe((usuario)=>{
+      
+    });
   }
 
   login() {
