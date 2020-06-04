@@ -1,0 +1,78 @@
+<div class="container mt-5">
+  <form action="" [formGroup]="formularioCliente">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="">Nombre</label>
+          <input type="text" class="form-control" placeholder="Agregue el nombre"
+                  formControlName="nombre">
+          <div *ngIf="formularioCliente.controls['nombre'].invalid && formularioCliente.controls['nombre'].dirty" class="alert alert-danger mt-1">
+            <span *ngIf="formularioCliente.controls['nombre'].errors.required">Correo es requerido</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="">Apellido</label>
+          <input type="text" class="form-control" placeholder="Agregue el apellido" formControlName="apellido">
+        </div>
+        <div *ngIf="formularioCliente.controls['apellido'].invalid && formularioCliente.controls['apellido'].dirty" class="alert alert-danger mt-1">
+          <span *ngIf="formularioCliente.controls['apellido'].errors.required">Correo es requerido</span>
+        </div>
+      </div>
+      
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="">Correo</label>
+          <input type="text" class="form-control" placeholder="Agregue un correo" formControlName="correo">
+          <div *ngIf="formularioCliente.controls['correo'].invalid && formularioCliente.controls['correo'].dirty" class="alert alert-danger mt-1">
+              <span *ngIf="formularioCliente.controls['correo'].errors.required">Correo es requerido</span>
+              <span *ngIf="formularioCliente.controls['correo'].errors.email">Correo no es valido</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="">Cedula</label>
+          <input type="text" class="form-control" placeholder="Agregue un correo" formControlName="cedula">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="">Fecha de Nacimiento</label>
+          <input type="date" class="form-control" placeholder="Agregue un correo" formControlName="fechaNacimiento"> 
+          <div *ngIf="formularioCliente.controls['fechaNacimiento'].invalid && formularioCliente.controls['fechaNacimiento'].dirty" class="alert alert-danger mt-1">
+            <span *ngIf="formularioCliente.controls['fechaNacimiento'].errors.required">Correo es requerido</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="">Teléfono</label>
+          <input type="text" class="form-control" placeholder="Agregue un teléfono" formControlName="telefono">
+        </div>
+        <div *ngIf="formularioCliente.controls['telefono'].invalid && formularioCliente.controls['telefono'].dirty" class="alert alert-danger mt-1">
+          <span *ngIf="formularioCliente.controls['telefono'].errors.required">Correo es requerido</span>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="">Imagen</label>
+          <input type="file" class="form-control-file" (change)="subirImagen($event)" placeholder="Agregue su imagen" formControlName="urlImg">
+        </div>
+        <div *ngIf="formularioCliente.controls['urlImg'].invalid && formularioCliente.controls['urlImg'].dirty" class="alert alert-danger mt-1">
+          <span *ngIf="formularioCliente.controls['urlImg'].errors.required">Correo es requerido</span>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <progressbar [value]="porcentajeSubida" type="danger" [striped]="true">{{ porcentajeSubida }}%</progressbar>
+      </div>
+      <br>  
+      <button class="btn btn-primary" *ngIf="!esEditable" [disabled]="!formularioCliente.valid" (click)="agregar()">Agregar</button>
+      <button class="btn btn-primary" *ngIf="esEditable" (click)="editar()">Editar</button>
+
+    </div>
+  </form>
+</div>

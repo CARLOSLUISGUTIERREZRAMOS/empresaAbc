@@ -18,14 +18,12 @@ export class AppComponent {
   {
     // Mostrando data observable
     this.afAuth.user.subscribe((usuario)=>{
-      
+			this.cargando = false;
+			this.usuario  = usuario;
     });
   }
 
   login() {
     this.afAuth.auth.signInWithEmailAndPassword('carlos.luis.gutierrez.ramos@gmail.com', 'dragon_1689');
-  }
-  logout() {
-    this.afAuth.auth.signOut();
   }
 }

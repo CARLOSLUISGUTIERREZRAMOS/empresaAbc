@@ -1,3 +1,43 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <form [formGroup]="formularioLogin">
+    <div class="text-center margin-top">
+      <h2>Inicio de sesión</h2>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" formControlName="email" 
+              id="email" placeholder="Ingrese su correo electrónico">
+      <div *ngIf="formularioLogin.controls['email'].invalid && formularioLogin.controls['email'].dirty" 
+            class="alert alert-danger" role="alert">
+        <span *ngIf="formularioLogin.controls['email'].errors.required">Correo es requerido</span>
+        <span *ngIf="formularioLogin.controls['email'].errors.email">Correo no es válido</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Contraseña</label>
+      <input type="password" class="form-control" formControlName="password"
+              id="password" placeholder="Ingrese su contraseña"
+              (KeyUp.enter)="ingresar()">
+      <div *ngIf="formularioLogin.controls['password'].invalid && formularioLogin.controls['password'].dirty" 
+            class="alert alert-danger" role="alert">
+          <span *ngIf="formularioLogin.controls['password'].errors.required">La contraseña es requerida</span>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary"
+            [disabled]="!formularioLogin.valid" (click)="ingresar()">Ingresar</button>
+    </form>
+    
+    <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
+      {{ textoError }}
+    </div>
+
+    <ngx-spinner 
+        bdColor="rgba(0, 0, 0, 0.8)" 
+        size = "large" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen]="true">
+        <p style="color: white" > Ingresando al sistema... </p>
+    </ngx-spinner>
+
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  formularioLogin: FormGroup;
+  datosCorrectos: boolean = true;
+  textoError: String = '';
+
+  constructor(private creadorFormulario: FormBuilder, public afAuth: AngularFireAuth,
+      public spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.formularioLogin = this.creadorFormulario.group({
+      email: ['', Validators.compose([
+        Validators.required, Validators.email
+      ])],
+      password: ['', Validators.required]
+    });
+  }
+
+  ingresar()
+  {
+    if (this.formularioLogin.valid) {
+      this.datosCorrectos = true;
+      this.spinner.show();
+
+      this.afAuth.auth.signInWithEmailAndPassword(this.formularioLogin.value.email, this.formularioLogin.value.password)
+      .then((usuario)=>{
+        console.log(usuario);
+        this.spinner.hide();
+      }).catch((error)=>{
+        this.datosCorrectos = false,
+        this.textoError = error.message;
+        this.spinner.hide();
+      });
+    } else {
+      this.datosCorrectos = false;
+      this.textoError = "Por favor revisa que los datos sean correctos"; 
+    }
   }
 
 }
