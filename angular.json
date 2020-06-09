@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "mastergym"
+  "defaultProject": "mastergym",
+  "cli": {
+    "analytics": "e4847738-941a-43d2-9201-86abad383c73"
+  }
 }

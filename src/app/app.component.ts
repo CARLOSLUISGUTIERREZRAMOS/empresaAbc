@@ -10,13 +10,12 @@ import { User } from 'firebase';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mastergym';
+  title = 'Empresa ABC';
   usuario: User;
   cargando: boolean = true;
 
   constructor(public afAuth: AngularFireAuth)
   {
-    // Mostrando data observable
     this.afAuth.user.subscribe((usuario)=>{
 			this.cargando = false;
 			this.usuario  = usuario;
@@ -24,6 +23,6 @@ export class AppComponent {
   }
 
   login() {
-    this.afAuth.auth.signInWithEmailAndPassword('carlos.luis.gutierrez.ramos@gmail.com', 'dragon_1689');
+    this.afAuth.auth.signInWithEmailAndPassword('empresaabc@gmail.com', '123456 ');
   }
 }
