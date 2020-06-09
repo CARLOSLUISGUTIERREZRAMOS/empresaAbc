@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAQwYtk59BwGdJP2jg3nF6gsuXRjVrKQJg",
-    authDomain: "mastergym-7551f.firebaseapp.com",
-    databaseURL: "https://mastergym-7551f.firebaseio.com",
-    projectId: "mastergym-7551f",
-    storageBucket: "mastergym-7551f.appspot.com",
-    messagingSenderId: "867883763670",
-    appId: "1:867883763670:web:1ea3bdbefc2ed6934c8677",
-    measurementId: "G-WMJL9VQT8J"
+    apiKey: "AIzaSyDQJdu_wxiEJqqamnG-S5oV4_eiEM-QJZg",
+    authDomain: "empresaabc-cc8d0.firebaseapp.com",
+    databaseURL: "https://empresaabc-cc8d0.firebaseio.com",
+    projectId: "empresaabc-cc8d0",
+    storageBucket: "empresaabc-cc8d0.appspot.com",
+    messagingSenderId: "963188507893",
+    appId: "1:963188507893:web:4535deed04b0f4afe871bc",
+    measurementId: "G-K607YEM981"
   }
 };
 
